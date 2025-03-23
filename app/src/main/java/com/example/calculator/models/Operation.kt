@@ -2,9 +2,12 @@ package com.example.calculator.models
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.DarkGray
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -53,6 +56,7 @@ class Operation (){
             viewMathProblem = op
         }else{
             endResult()
+            viewMathProblem = op
         }
         updateScreen()
     }
@@ -75,14 +79,22 @@ class Operation (){
             "x" -> result = numberFirstValue * numberSecondValue
             "÷" -> result = numberFirstValue / numberSecondValue
         }
+
+        firstValue.clear()
+        secondValue.clear()
+        viewMathProblem = ""
+        firstValue.addAll(result.toString().map { it.digitToInt() })
+        updateScreen()
     }
 
     @Composable
     fun Visualizer() {
         numberFirstValue = calculate(firstValue)
         numberSecondValue = calculate(secondValue)
-        Column(modifier = Modifier.padding(5.dp)) {
-            Text(text = viewFirstValue + viewMathProblem + viewSecondValue, fontSize = 32.sp)
+        Column(modifier = Modifier.padding(5.dp)
+                            .size(999.dp, 75.dp)
+        ) {
+            Text(text = viewFirstValue + viewMathProblem + viewSecondValue, fontSize = 48.sp)
         }
     }
 }
