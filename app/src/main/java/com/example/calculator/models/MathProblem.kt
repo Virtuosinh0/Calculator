@@ -25,7 +25,7 @@ class MathProblem (val symbol : String) {
             shape = RoundedCornerShape(4.dp),
             colors = ButtonDefaults.buttonColors(containerColor = Color.DarkGray)
         ) {
-            Text(text = "$symbol", fontSize = 25.sp, modifier = Modifier.padding(5.dp))
+            Text(text = symbol, fontSize = 25.sp, modifier = Modifier.padding(5.dp))
         }
     }
 }
