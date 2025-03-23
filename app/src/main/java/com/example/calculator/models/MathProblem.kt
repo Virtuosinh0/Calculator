@@ -15,7 +15,7 @@ class MathProblem (val symbol : String) {
     @Composable
     fun SymbolButton(source: Operation){
         Button(onClick = {
-            source.MathOperation(symbol)
+            source.mathOperation(symbol)
         },
             Modifier.padding(1.dp),
             shape = RoundedCornerShape(4.dp),

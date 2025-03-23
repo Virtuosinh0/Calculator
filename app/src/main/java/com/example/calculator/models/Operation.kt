@@ -10,25 +10,25 @@ import androidx.compose.ui.unit.sp
 
 
 class Operation (){
-    var result by mutableStateOf(0)
+    var result by mutableIntStateOf(0)
     var viewFirstValue by mutableStateOf("")
     var viewSecondValue by mutableStateOf("")
     var viewMathProblem by mutableStateOf("")
     var firstValue = mutableListOf<Int>()
     var secondValue = mutableListOf<Int>()
-    var numberFirstValue by mutableStateOf(0)
-    var numberSecondValue by mutableStateOf(0)
+    var numberFirstValue by mutableIntStateOf(0)
+    var numberSecondValue by mutableIntStateOf(0)
 
-    fun AddNumber(number: Int) {
+    fun addNumber(number: Int) {
         if (viewMathProblem == "") {
             firstValue.add(number)
         }
         else{
             secondValue.add(number)
         }
-        UpdateScreen()
+        updateScreen()
     }
-    fun EraseNumber(){
+    fun eraseNumber(){
         if(secondValue.isNotEmpty()){
             secondValue.removeAt(secondValue.lastIndex)
         }else{
@@ -40,24 +40,24 @@ class Operation (){
                 viewMathProblem = ""
             }
         }
-        UpdateScreen()
+        updateScreen()
     }
 
-    fun UpdateScreen(){
+    fun updateScreen(){
         viewFirstValue = firstValue.joinToString("")
         viewSecondValue = secondValue.joinToString("")
     }
 
-    fun MathOperation(op: String){
+    fun mathOperation(op: String){
         if(secondValue.isEmpty()){
             viewMathProblem = op
         }else{
-            EndResult()
+            endResult()
         }
-        UpdateScreen()
+        updateScreen()
     }
 
-    fun Calculate(list: List<Int>): Int {
+    fun calculate(list: List<Int>): Int {
         var tempNumber = 0
         for (i in list.indices) {
             tempNumber = tempNumber * 10 + list[i]
@@ -65,9 +65,9 @@ class Operation (){
         return tempNumber
     }
 
-    fun EndResult(){
-        numberFirstValue = Calculate(firstValue)
-        numberSecondValue = Calculate(secondValue)
+    fun endResult(){
+        numberFirstValue = calculate(firstValue)
+        numberSecondValue = calculate(secondValue)
 
         when (viewMathProblem) {
             "+" -> result = numberFirstValue + numberSecondValue
@@ -79,8 +79,8 @@ class Operation (){
 
     @Composable
     fun Visualizer() {
-        numberFirstValue = Calculate(firstValue)
-        numberSecondValue = Calculate(secondValue)
+        numberFirstValue = calculate(firstValue)
+        numberSecondValue = calculate(secondValue)
         Column(modifier = Modifier.padding(5.dp)) {
             Text(text = viewFirstValue + viewMathProblem + viewSecondValue, fontSize = 32.sp)
         }

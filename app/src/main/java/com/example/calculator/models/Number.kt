@@ -16,7 +16,7 @@ class Number (val number: Int){
     @Composable
     fun NumberButton(source: Operation){
         Button(onClick = {
-            source.AddNumber(number)
+            source.addNumber(number)
         },
             Modifier.padding(1.dp),
             shape = RoundedCornerShape(4.dp),

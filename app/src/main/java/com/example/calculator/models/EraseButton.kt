@@ -14,7 +14,7 @@ class EraseButton {
     @Composable
     fun SymbolButton(source: Operation){
         Button(onClick = {
-            source.EraseNumber()
+            source.eraseNumber()
         },
             Modifier.padding(1.dp),
             shape = RoundedCornerShape(4.dp),

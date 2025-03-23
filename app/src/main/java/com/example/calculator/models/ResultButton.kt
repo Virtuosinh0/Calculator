@@ -14,7 +14,7 @@ class ResultButton {
     @Composable
     fun SymbolButton(source: Operation){
         Button(onClick = {
-            source.EndResult()
+            source.endResult()
         },
             Modifier.padding(1.dp),
             shape = RoundedCornerShape(4.dp),
