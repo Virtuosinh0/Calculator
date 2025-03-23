@@ -6,21 +6,19 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Color.Companion.DarkGray
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 
-class Operation (){
-    var result by mutableIntStateOf(0)
-    var viewFirstValue by mutableStateOf("")
-    var viewSecondValue by mutableStateOf("")
-    var viewMathProblem by mutableStateOf("")
-    var firstValue = mutableListOf<Int>()
-    var secondValue = mutableListOf<Int>()
-    var numberFirstValue by mutableIntStateOf(0)
-    var numberSecondValue by mutableIntStateOf(0)
+class Operation {
+    private var result by mutableIntStateOf(0)
+    private var viewFirstValue by mutableStateOf("")
+    private var viewSecondValue by mutableStateOf("")
+    private var viewMathProblem by mutableStateOf("")
+    private var firstValue = mutableListOf<Int>()
+    private var secondValue = mutableListOf<Int>()
+    private var numberFirstValue by mutableIntStateOf(0)
+    private var numberSecondValue by mutableIntStateOf(0)
 
     fun addNumber(number: Int) {
         if (viewMathProblem == "") {
@@ -46,7 +44,7 @@ class Operation (){
         updateScreen()
     }
 
-    fun updateScreen(){
+    private fun updateScreen(){
         viewFirstValue = firstValue.joinToString("")
         viewSecondValue = secondValue.joinToString("")
     }
@@ -61,7 +59,7 @@ class Operation (){
         updateScreen()
     }
 
-    fun calculate(list: List<Int>): Int {
+    private fun calculate(list: List<Int>): Int {
         var tempNumber = 0
         for (i in list.indices) {
             tempNumber = tempNumber * 10 + list[i]
